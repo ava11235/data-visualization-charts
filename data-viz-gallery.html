@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science & Analysis Chart Gallery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .chart-header {
+            margin-bottom: 15px;
+        }
+
+        .chart-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .chart-usecase {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+            padding: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Data Science & Analysis Chart Gallery</h1>
+            <p class="subtitle">Common visualizations with practical use cases</p>
+        </header>
+
+        <div class="grid">
+            <!-- Line Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Line Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Track trends over time such as stock prices, website traffic, temperature changes, or sales performance across months/years.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Bar Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Compare categorical data like sales by product, revenue by region, or survey responses across different groups.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Pie Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Show proportions or percentages of a whole, such as market share distribution, budget allocation, or demographic breakdowns.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Doughnut Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Doughnut Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Similar to pie charts but with better readability for displaying composition of datasets like customer segments or resource utilization.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Scatter Plot -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Scatter Plot</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Identify correlations and relationships between two variables like height vs weight, advertising spend vs sales, or test scores vs study hours.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Area Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Area Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Emphasize magnitude of change over time, useful for cumulative data like total revenue growth or resource consumption patterns.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="areaChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Horizontal Bar Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Horizontal Bar Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Compare items with long labels, rankings, or when you have many categories like top 10 products or employee performance scores.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="horizontalBarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Horizontal Percentage Bar Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Horizontal Percentage Bar Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Display completion rates, satisfaction percentages, or progress metrics across categories like project completion or survey agreement levels.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="horizontalPercentageChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Stacked Bar Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Stacked Bar Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Show part-to-whole relationships over categories, like sales breakdown by product line across quarters or demographic distribution by region.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="stackedBarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Radar Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Radar Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Compare multiple quantitative variables simultaneously, ideal for performance metrics, skill assessments, or competitive analysis across dimensions.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Polar Area Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Polar Area Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Display cyclical data with varying magnitudes, such as seasonal patterns, directional data, or periodic measurements like wind patterns.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="polarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Bubble Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Bubble Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Visualize three dimensions of data simultaneously, such as GDP (x) vs life expectancy (y) vs population (size) across countries.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="bubbleChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Multi-Line Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2 class="chart-title">Multi-Line Chart</h2>
+                    <p class="chart-usecase"><strong>Use Case:</strong> Compare multiple trends simultaneously over time, like comparing performance of different products, teams, or A/B test variants.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="multiLineChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with Chart.js • Perfect for Data Science & Analytics Projects</p>
+        </footer>
+    </div>
+
+    <script>
+        // Color palette
+        const colors = {
+            primary: ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a', '#fee140', '#30cfd0'],
+            transparent: ['rgba(102, 126, 234, 0.5)', 'rgba(118, 75, 162, 0.5)', 'rgba(240, 147, 251, 0.5)', 'rgba(79, 172, 254, 0.5)']
+        };
+
+        // Line Chart
+        new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Revenue ($K)',
+                    data: [30, 45, 35, 60, 55, 75, 85],
+                    borderColor: colors.primary[0],
+                    backgroundColor: colors.transparent[0],
+                    tension: 0.4,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: true }
+                }
+            }
+        });
+
+        // Bar Chart
+        new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'],
+                datasets: [{
+                    label: 'Sales Volume',
+                    data: [120, 190, 150, 220, 180],
+                    backgroundColor: colors.primary[0]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Pie Chart
+        new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Direct', 'Organic', 'Referral', 'Social', 'Email'],
+                datasets: [{
+                    data: [30, 25, 20, 15, 10],
+                    backgroundColor: colors.primary.slice(0, 5)
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Doughnut Chart
+        new Chart(document.getElementById('doughnutChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Mobile', 'Desktop', 'Tablet', 'Other'],
+                datasets: [{
+                    data: [45, 35, 15, 5],
+                    backgroundColor: colors.primary.slice(0, 4)
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Scatter Plot
+        new Chart(document.getElementById('scatterChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Sales vs Marketing Spend',
+                    data: [
+                        {x: 10, y: 20}, {x: 15, y: 25}, {x: 20, y: 30},
+                        {x: 25, y: 32}, {x: 30, y: 40}, {x: 35, y: 45},
+                        {x: 40, y: 50}, {x: 45, y: 55}, {x: 50, y: 60}
+                    ],
+                    backgroundColor: colors.primary[0]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: 'Marketing Spend ($K)' }},
+                    y: { title: { display: true, text: 'Sales ($K)' }}
+                }
+            }
+        });
+
+        // Area Chart
+        new Chart(document.getElementById('areaChart'), {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Cumulative Users',
+                    data: [1000, 2500, 4200, 6800],
+                    borderColor: colors.primary[2],
+                    backgroundColor: colors.transparent[2],
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Horizontal Bar Chart
+        new Chart(document.getElementById('horizontalBarChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Customer Service', 'Product Quality', 'Delivery Speed', 'Price', 'User Interface'],
+                datasets: [{
+                    label: 'Satisfaction Score',
+                    data: [85, 92, 78, 88, 90],
+                    backgroundColor: colors.primary[3]
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Horizontal Percentage Bar Chart
+        new Chart(document.getElementById('horizontalPercentageChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Project Alpha', 'Project Beta', 'Project Gamma', 'Project Delta', 'Project Epsilon'],
+                datasets: [{
+                    label: 'Completion %',
+                    data: [95, 78, 88, 65, 100],
+                    backgroundColor: [
+                        colors.primary[4],
+                        colors.primary[5],
+                        colors.primary[6],
+                        colors.primary[7],
+                        colors.primary[4]
+                    ]
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.x + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Stacked Bar Chart
+        new Chart(document.getElementById('stackedBarChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Online Sales',
+                    data: [30, 40, 35, 50],
+                    backgroundColor: colors.primary[0]
+                }, {
+                    label: 'Retail Sales',
+                    data: [20, 25, 30, 35],
+                    backgroundColor: colors.primary[1]
+                }, {
+                    label: 'Wholesale',
+                    data: [15, 20, 18, 25],
+                    backgroundColor: colors.primary[2]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { stacked: true },
+                    y: { stacked: true }
+                }
+            }
+        });
+
+        // Radar Chart
+        new Chart(document.getElementById('radarChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Speed', 'Reliability', 'Comfort', 'Safety', 'Efficiency', 'Cost'],
+                datasets: [{
+                    label: 'Product A',
+                    data: [85, 90, 70, 95, 80, 75],
+                    borderColor: colors.primary[0],
+                    backgroundColor: colors.transparent[0]
+                }, {
+                    label: 'Product B',
+                    data: [75, 85, 90, 80, 85, 90],
+                    borderColor: colors.primary[1],
+                    backgroundColor: colors.transparent[1]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Polar Area Chart
+        new Chart(document.getElementById('polarChart'), {
+            type: 'polarArea',
+            data: {
+                labels: ['Spring', 'Summer', 'Fall', 'Winter'],
+                datasets: [{
+                    data: [80, 95, 70, 60],
+                    backgroundColor: colors.primary.slice(0, 4)
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Bubble Chart
+        new Chart(document.getElementById('bubbleChart'), {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'Campaign Performance',
+                    data: [
+                        {x: 20, y: 30, r: 15},
+                        {x: 40, y: 50, r: 25},
+                        {x: 30, y: 40, r: 10},
+                        {x: 50, y: 60, r: 30},
+                        {x: 25, y: 35, r: 20}
+                    ],
+                    backgroundColor: colors.transparent[0],
+                    borderColor: colors.primary[0]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: 'Reach' }},
+                    y: { title: { display: true, text: 'Engagement' }}
+                }
+            }
+        });
+
+        // Multi-Line Chart
+        new Chart(document.getElementById('multiLineChart'), {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+                datasets: [{
+                    label: 'Variant A',
+                    data: [30, 35, 40, 38, 45, 50],
+                    borderColor: colors.primary[0],
+                    tension: 0.4,
+                    fill: false
+                }, {
+                    label: 'Variant B',
+                    data: [25, 32, 38, 42, 48, 55],
+                    borderColor: colors.primary[1],
+                    tension: 0.4,
+                    fill: false
+                }, {
+                    label: 'Control',
+                    data: [28, 30, 32, 33, 35, 37],
+                    borderColor: colors.primary[2],
+                    tension: 0.4,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>
